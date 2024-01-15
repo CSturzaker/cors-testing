@@ -18,7 +18,7 @@ export class HttpServiceService {
     };
     return this.http
       .get(
-        "",
+        "https://thirdp-test.telicent.live/api/write-back/buildings/states/classes",
         httpOptions
       )
       .pipe(catchError(this.handleError));
@@ -26,18 +26,17 @@ export class HttpServiceService {
 
   flagToInvestigate() {
     const httpHeaders = new HttpHeaders({
-      "Content-Type": "application/json; text/plain",
-      "Access-Control-Allow-Headers": "*",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "http://localhost:4200",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
     });
 
     return this.http
       .post(
-        "",
+        "https://thirdp-test.telicent.live/api/write-back/flag-to-investigate",
         { uri: "http://nationaldigitaltwin.gov.uk/data#building_10094231272" },
         {
           headers: httpHeaders,
-          withCredentials: false,
+          withCredentials: true,
         }
       )
       .pipe(catchError(this.handleError));
